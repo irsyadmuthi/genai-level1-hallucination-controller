@@ -3,13 +3,12 @@ from dotenv import load_dotenv
 import os
 import json
 
-# Load API key dari .env
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-# =====================
-# KONTEKS & PROMPT
-# =====================
+
+# konteks & prompt 
+
 konteks_gadget = "ipad pro 2021, dengan layar 12.9 inci, prosesor M1, RAM 16GB, penyimpanan 2TB, dan harga $1999."
 
 few_shot_prompt = f"""
@@ -32,17 +31,16 @@ pertanyaan : ekstrak informasi tentang nama, ukuran layar, prosesor, RAM, produk
 output JSON:
 """
 
-# =====================
-# PANGGIL GEMINI API
-# =====================
+
+# Panggil API Gemini
+
 response = client.models.generate_content(
     model="models/gemini-2.5-flash",
     contents=few_shot_prompt
 )
 
-# =====================
-# TAMPILKAN HASIL
-# =====================
+# Tampilan hasil
+
 print("=" * 40)
 print("RAW OUTPUT DARI GEMINI:")
 print("=" * 40)
