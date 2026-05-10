@@ -54,6 +54,6 @@ try:
         "```json").removeprefix("```").removesuffix("```").strip()
     data = json.loads(clean)
     print(json.dumps(data, indent=2, ensure_ascii=False))
-    print("\n✅ JSON valid!")
+    print("\n JSON valid!")
 except json.JSONDecodeError as e:
-    print(f"❌ JSON tidak valid: {e}")
+    print(f" JSON tidak valid: {e}")
